@@ -22,4 +22,4 @@ if file:
     
     data = analysis.to_csv().encode('utf-8')
     
-st.download_button('download',data,'file.csv','text/csv',key='download-csv')
+    st.download_button('download',data,'file.csv','text/csv',key='download-csv')
