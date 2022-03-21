@@ -13,6 +13,6 @@ if file:
     analysis = analysis.T*100
     col = analysis.columns
     analysis[col] = analysis[col].applymap('{:,.2f}%'.format)
-    st.dataframe(analysis.T)
+    st.dataframe(analysis)
     data = analysis.to_csv().encode('utf-8')
     st.download_button('download',data,'file.csv','text/csv',key='download-csv')
