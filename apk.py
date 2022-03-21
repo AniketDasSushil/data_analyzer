@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import plotly.express as px
+from plotly import express as px
 st.title('Data Analyzer')
 st.caption('~made by aniket das')
 file = st.file_uploader('upload your csv file here')
