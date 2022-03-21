@@ -8,7 +8,9 @@ if file:
     base_column = st.selectbox(label='select the base column',options=x.columns)
     analysis_column = st.selectbox(label='select the analysis column',options=x.columns)
     analysis = x.groupby(base_column)[analysis_column].value_counts(normalize=True).to_frame()
-    analysis = analysis.unstack().reset_index()
+    analysis = analysis.unstack().reset_index().set_index(base_column).T*100
+    col = analysis.columns
+    analysis[col] = analysis[col].applymap('{:,.2f}%'.format)
     st.table(analysis)
     data = analysis.to_csv().encode('utf-8')
     st.download_button('download',data,'file.csv','text/csv',key='download-csv')
