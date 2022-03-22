@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import numpy as np
 from plotly import express as px
 st.title('Data Analyzer')
 st.caption('~made by aniket das')
@@ -17,6 +18,7 @@ if file:
     analysis = analysis.set_index(base_column)
     analysis = analysis.T*100
     col = analysis.columns
+    analysis.replace(np.nan,0,inplace=True)
     analysis[col] = analysis[col].applymap('{:,.2f}%'.format)
     st.dataframe(analysis)
     data = analysis.to_csv().encode('utf-8')
