@@ -25,7 +25,7 @@ if file:
         dis.rename(columns={analysis_column:'percent'},inplace=True)
         dis = dis.reset_index()
         dis['percent'] = dis['percent']*100
-        fig = px.bar(y=dis['percent'],x=dis[base_column],title=analysis_column,color=dis[analysis_column],template='presentation',labels={'y':'percent','x':base_column},text=dis['percent'].apply(lambda x: "{0:1.2f}%".format(x)))
+        fig = px.bar(y=dis['percent'],x=dis[base_column],title=analysis_column,color=dis[analysis_column],template='simple_white',labels={'y':'percent','x':base_column},text=dis['percent'].apply(lambda x: "{0:1.2f}%".format(x)))
        
         st.plotly_chart(fig)
     
