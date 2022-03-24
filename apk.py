@@ -74,12 +74,13 @@ if file:
             deg = (len(analysis.columns)-1)*(len(analysis.index)-1)
             st.info('degree of freedom is'+ str(deg))
             st.subheader('critical value of chi-squrare distiribution')
-            tb = pd.read_csv('table.csv',index_col=0).head(10)
+            tb = pd.read_csv('table.csv',index_col=0)
             st.table(tb)
             st.subheader('significance factor')
             p = st.selectbox('choose the significance factor(if no idea put 0.05)',options=tb.columns)
             st.subheader('critical value')
             cv = tb[str(p)].iloc[deg-1]
+            st.write(cv)
             st.info('critcal value is '+ str(cv))
             if chi_value > float(cv):
                 st.write(f"since chi_value({chi_value}) is greater than critical value({cv})")
