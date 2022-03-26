@@ -73,9 +73,7 @@ if file:
             st.subheader('degree of freedom')
             deg = (len(analysis.columns)-1)*(len(analysis.index)-1)
             st.info('degree of freedom is'+ str(deg))
-            st.subheader('critical value of chi-squrare distiribution')
             tb = pd.read_csv('table.csv',index_col=0)
-            st.table(tb)
             st.subheader('significance factor')
             p = st.selectbox('choose the significance factor(if no idea put 0.05)',options=tb.columns)
             st.subheader('critical value')
@@ -90,3 +88,4 @@ if file:
                 st.write(f"since chi_value({chi_value}) is less than critical value({cv})")
                 st.warning('your H0 hypotheisis is proven')
                 st.write('there is **no significant** relation ship between '+ base_column +" and "+analysis_column)
+                
